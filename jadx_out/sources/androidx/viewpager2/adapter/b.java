@@ -1,0 +1,28 @@
+package androidx.viewpager2.adapter;
+
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import androidx.annotation.ah;
+import androidx.core.n.af;
+import androidx.recyclerview.widget.RecyclerView;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class b extends RecyclerView.z {
+    private b(@ah FrameLayout frameLayout) {
+        super(frameLayout);
+    }
+
+    @ah
+    static b a(@ah ViewGroup viewGroup) {
+        FrameLayout frameLayout = new FrameLayout(viewGroup.getContext());
+        frameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        frameLayout.setId(af.a());
+        frameLayout.setSaveEnabled(false);
+        return new b(frameLayout);
+    }
+
+    @ah
+    FrameLayout D() {
+        return (FrameLayout) this.f1016a;
+    }
+}

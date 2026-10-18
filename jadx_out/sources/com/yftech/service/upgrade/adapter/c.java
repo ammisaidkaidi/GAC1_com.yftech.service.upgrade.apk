@@ -1,0 +1,21 @@
+package com.yftech.service.upgrade.adapter;
+
+/* JADX INFO: loaded from: classes.dex */
+public interface c extends b {
+
+    public interface a {
+        void a(int i);
+
+        void b(int i);
+    }
+
+    void a(a aVar);
+
+    boolean a(String[] strArr);
+
+    void a_(int i);
+
+    void b(int i);
+
+    boolean b(String[] strArr);
+}

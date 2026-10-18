@@ -1,0 +1,164 @@
+package com.google.android.material.z.a;
+
+import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.os.Build;
+import android.transition.Transition;
+import android.transition.TransitionSet;
+import android.view.View;
+import androidx.annotation.ah;
+import androidx.annotation.ai;
+import androidx.annotation.am;
+
+/* JADX INFO: loaded from: classes.dex */
+@am(a = 21)
+class v {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    private static final RectF f1535a = new RectF();
+
+    interface a {
+        void a(Canvas canvas);
+    }
+
+    interface b {
+        @ah
+        com.google.android.material.t.d a(@ah com.google.android.material.t.d dVar, @ah com.google.android.material.t.d dVar2);
+    }
+
+    private v() {
+    }
+
+    static float a(float f, float f2, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f3) {
+        return f + (f3 * (f2 - f));
+    }
+
+    static float a(float f, float f2, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f3, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f4, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f5) {
+        if (f5 < f3) {
+            return f;
+        }
+        return f5 > f4 ? f2 : a(f, f2, (f5 - f3) / (f4 - f3));
+    }
+
+    static float a(@ah RectF rectF) {
+        return rectF.width() * rectF.height();
+    }
+
+    static int a(int i, int i2, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f2, @androidx.annotation.r(a = 0.0d, b = 1.0d) float f3) {
+        if (f3 < f) {
+            return i;
+        }
+        return f3 > f2 ? i2 : (int) a(i, i2, (f3 - f) / (f2 - f));
+    }
+
+    private static int a(Canvas canvas, Rect rect, int i) {
+        f1535a.set(rect);
+        return Build.VERSION.SDK_INT >= 21 ? canvas.saveLayerAlpha(f1535a, i) : canvas.saveLayerAlpha(f1535a.left, f1535a.top, f1535a.right, f1535a.bottom, i, 31);
+    }
+
+    static RectF a(View view) {
+        return new RectF(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
+    }
+
+    static Shader a(@androidx.annotation.k int i) {
+        return new LinearGradient(0.0f, 0.0f, 0.0f, 0.0f, i, i, Shader.TileMode.CLAMP);
+    }
+
+    static View a(View view, @androidx.annotation.w int i) {
+        View viewFindViewById = view.findViewById(i);
+        return viewFindViewById != null ? viewFindViewById : b(view, i);
+    }
+
+    static com.google.android.material.t.o a(com.google.android.material.t.o oVar, final RectF rectF) {
+        return oVar.a(new com.google.android.material.t.o.b() { // from class: com.google.android.material.z.a.v.1
+            @Override // com.google.android.material.t.o.b
+            @ah
+            public com.google.android.material.t.d a(@ah com.google.android.material.t.d dVar) {
+                return dVar instanceof com.google.android.material.t.m ? dVar : new com.google.android.material.t.m(dVar.a(rectF) / rectF.height());
+            }
+        });
+    }
+
+    static com.google.android.material.t.o a(com.google.android.material.t.o oVar, com.google.android.material.t.o oVar2, final RectF rectF, final RectF rectF2, @androidx.annotation.r(a = 0.0d, b = 1.0d) final float f, @androidx.annotation.r(a = 0.0d, b = 1.0d) final float f2, @androidx.annotation.r(a = 0.0d, b = 1.0d) final float f3) {
+        if (f3 < f) {
+            return oVar;
+        }
+        return f3 > f2 ? oVar2 : a(oVar, oVar2, rectF, new b() { // from class: com.google.android.material.z.a.v.2
+            @Override // com.google.android.material.z.a.v.b
+            @ah
+            public com.google.android.material.t.d a(@ah com.google.android.material.t.d dVar, @ah com.google.android.material.t.d dVar2) {
+                return new com.google.android.material.t.a(v.a(dVar.a(rectF), dVar2.a(rectF2), f, f2, f3));
+            }
+        });
+    }
+
+    static com.google.android.material.t.o a(com.google.android.material.t.o oVar, com.google.android.material.t.o oVar2, RectF rectF, b bVar) {
+        return (b(oVar, rectF) ? oVar : oVar2).n().b(bVar.a(oVar.f(), oVar2.f())).c(bVar.a(oVar.g(), oVar2.g())).e(bVar.a(oVar.i(), oVar2.i())).d(bVar.a(oVar.h(), oVar2.h())).a();
+    }
+
+    @ah
+    static <T> T a(@ai T t, @ah T t2) {
+        return t != null ? t : t2;
+    }
+
+    static void a(Canvas canvas, Rect rect, float f, float f2, float f3, int i, a aVar) {
+        if (i <= 0) {
+            return;
+        }
+        int iSave = canvas.save();
+        canvas.translate(f, f2);
+        canvas.scale(f3, f3);
+        if (i < 255) {
+            a(canvas, rect, i);
+        }
+        aVar.a(canvas);
+        canvas.restoreToCount(iSave);
+    }
+
+    static void a(TransitionSet transitionSet, @ai Transition transition) {
+        if (transition != null) {
+            transitionSet.addTransition(transition);
+        }
+    }
+
+    static Rect b(View view) {
+        return new Rect(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
+    }
+
+    static View b(View view, @androidx.annotation.w int i) {
+        String resourceName = view.getResources().getResourceName(i);
+        while (view != null) {
+            if (view.getId() != i) {
+                Object parent = view.getParent();
+                if (!(parent instanceof View)) {
+                    break;
+                }
+                view = (View) parent;
+            } else {
+                return view;
+            }
+        }
+        throw new IllegalArgumentException(resourceName + " is not a valid ancestor");
+    }
+
+    static void b(TransitionSet transitionSet, @ai Transition transition) {
+        if (transition != null) {
+            transitionSet.removeTransition(transition);
+        }
+    }
+
+    private static boolean b(com.google.android.material.t.o oVar, RectF rectF) {
+        return (oVar.f().a(rectF) == 0.0f && oVar.g().a(rectF) == 0.0f && oVar.h().a(rectF) == 0.0f && oVar.i().a(rectF) == 0.0f) ? false : true;
+    }
+
+    static RectF c(View view) {
+        int[] iArr = new int[2];
+        view.getLocationOnScreen(iArr);
+        int i = iArr[0];
+        int i2 = iArr[1];
+        return new RectF(i, i2, view.getWidth() + i, view.getHeight() + i2);
+    }
+}
